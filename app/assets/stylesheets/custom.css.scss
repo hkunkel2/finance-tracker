@@ -15,4 +15,25 @@ body {
 #page-content {
     flex: 1 0 auto;
      background-color: #e2e2f8;
+     padding-bottom: 1000px;
+}
+
+.search-area {
+    padding-top: 50px;
+}
+
+.no-right-padding {
+    padding-right: 0 !important;
+}
+.no-left-padding {
+    padding-left: 0 !important;
+}
+
+.results-block {
+    display: inline-block;
+}
+
+.custom-table {
+    background-color: #473858;
+    color: white;
 }
