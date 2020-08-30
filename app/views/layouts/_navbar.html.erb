@@ -1,41 +1,38 @@
 <nav class="navbar navbar-expand-lg navbar-light mb-0">
     <div class="container">
-        <a class="navbar-brand" href="#">Stock Tracker</a>
+        <a class="navbar-brand" href="#">FinanceTracker</a>
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <li class="nav-item active">
-                    <%= link_to 'Home', root_path, class: "nav-link" %>
-                </li>
-                <% if user_signed_in? %>
-                    <li class="nav-item">
-                        <%= link_to 'My Portfilio', my_portfilio_path, class: "nav-link" %>
+        <% if user_signed_in? %>
+            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item <%= 'active' if request.path == root_path %>">
+                        <%= link_to 'Home', root_path, class: "nav-link" %>
                     </li>
-                <% end %>
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Account
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">My Portfilio</a>
-                        <a class="dropdown-item" href="#">Friends</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Edit here</a>
-                    </div>
-                </li>
-                <% if user_signed_in? %>
-                    <li class="nav-item">
-                        <%= link_to 'Sign out', destroy_user_session_path, class: "nav-link", method: :delete %>
+                        <li class="nav-item <%= 'active' if request.path == my_portfilio_path %>">
+                            <%= link_to 'My Portfilio', my_portfilio_path, class: "nav-link" %>
+                        </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Account
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="#">My Portfilio</a>
+                            <a class="dropdown-item" href="#">Friends</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="#">Edit here</a>
+                        </div>
                     </li>
-                <% end %>
-            </ul>
-            <form class="form-inline my-2 my-lg-0">
-                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-                <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
-            </form>
-        </div>
+                        <li class="nav-item">
+                            <%= link_to 'Sign out', destroy_user_session_path, class: "nav-link", method: :delete %>
+                        </li>
+                </ul>
+                <form class="form-inline my-2 my-lg-0">
+                    <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                    <button class="btn btn-outline-primary my-2 my-sm-0" type="submit">Search</button>
+                </form>
+            </div>
+        <% end %>
     </div>
 </nav>
