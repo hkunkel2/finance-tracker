@@ -19,7 +19,9 @@
                         </a>
                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                             <%= link_to "My Portfilio", my_portfilio_path, class: "dropdown-item"%>
-                            <a class="dropdown-item" href="#">Friends</a>
+                            <%= link_to friends_path, class: "dropdown-item" do %>
+                                <%= fa_icon 'users' %> Friends
+                            <% end %>
                             <div class="dropdown-divider"></div>
                             <%= link_to edit_user_registration_path, class: "dropdown-item" do %>
                                 <%= fa_icon 'edit' %> Edit Profile 

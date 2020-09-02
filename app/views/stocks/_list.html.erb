@@ -16,7 +16,24 @@
                     <th scope="row"><%= stock.ticker %></th>
                     <td><%= stock.name %></td>
                     <td><%= stock.last_price %></td>
-                    <td><%= link_to 'Remove', user_stock_path(stock), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %></td>
+                    <% if current_user.id == @user.id %>
+                        <td><%= link_to 'Remove', user_stock_path(stock), method: :delete, data: {confirm: 'Are you sure?'}, class: "btn btn-sm btn-danger" %></td>
+                    <% else %>
+                        <td>
+                            <% if current_user.can_track_stock?(stock.ticker) %>
+                                <%= link_to 'Add to portfilio', user_stocks_path(user: current_user, ticker: stock.ticker), class: "btn btn-sm btn-primary", method: :post  %>
+                            <% else %>
+                                <div class= "badge badge-secondary">
+                                    You are already tracking
+                                    <% if !current_user.under_stock_limit? %>
+                                        the maximun number of stocks!
+                                    <% else %>
+                                        this stock!
+                                    <% end %>
+                                </div>
+                            <%end%>
+                        </td>
+                    <% end %> 
                 </tr>
             <% end %>
         </tbody>

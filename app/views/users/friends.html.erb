@@ -1,0 +1,12 @@
+<h1> Friends </h1>
+
+<%= render 'users/friends_search'%>
+
+<div id="friend-results">
+
+</div>
+
+<% if !@friends.empty? %>
+    <%= render 'users/friends_list'%>
+<% end %>    
+
